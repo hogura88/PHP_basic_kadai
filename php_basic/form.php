@@ -1,11 +1,10 @@
 <!DOCTYPE html>
- <html lang="ja">
- 
- <head>
-     <meta charset="UTF-8">
-     <title>PHP基礎編</title>
- </head>
- 
+<html lang='ja'>
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
 <body>
     <h2>お問い合わせ</h2>
     <form action="confirm.php" method="post">
@@ -43,7 +42,6 @@
             <tr>
                 <td>お問い合わせ内容</td>
                 <td>
-                    <!-- cols属性＝入力欄の幅（文字数）、rows属性＝入力欄の高さ（行数） -->
                     <textarea name="message" cols="30" rows="10"></textarea>
                 </td>
             </tr>
@@ -51,5 +49,5 @@
         <input type="submit" value="送信">
     </form>
 </body>
- 
+
 </html>
