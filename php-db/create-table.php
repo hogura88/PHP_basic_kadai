@@ -20,15 +20,14 @@
                 id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
                 name VARCHAR(60) NOT NULL,
                 furigana VARCHAR(60) NOT NULL,
-                email VARCHAR(255) NOT NULL,                    
+                email VARCHAR(255) NOT NULL,
                 age INT(11),
-                address VARCHAR(255)                    
+                address VARCHAR(255)
             )';
-            
             $pdo->query($sql);
-        } catch (PDOException $e) {
-            exit($e->getMessage());
-        }
+            } catch (PDOException $e) {
+                exit($e->getMessage());
+            }
         ?>
      </p>
 </body>
