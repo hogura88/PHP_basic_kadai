@@ -6,13 +6,21 @@
  try {
     $pdo = new PDO($dsn, $user, $password);
 
-    // usersテーブルからidカラムとnameカラムのデータを取得するためのSQL文を変数$sqlに代入する
-    $sql = 'SELECT id, name FROM users';
+    if (isset($_GET['keyword'])) {
+        $keyword = $_GET['keyword'];
+    } else {
+        $keyword = NULL;
+    }
 
-    // SQL文を実行する
-    $stmt = $pdo->query($sql);
+    $sql = 'SELECT name, furigana FROM users WHERE furigana LIKE :keyword';
+    $stmt = $pdo->prepare($sql);
 
-    // SQL文の実行結果を配列で取得する
+    $partial_match = "%{$keyword}%";
+
+    $stmt->bindValue(':keyword', $partial_match, PDO::PARAM_STR);
+
+    $stmt->execute();
+
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     exit($e->getMessage());
@@ -30,15 +38,19 @@
  </head>
  
  <body>
+        <form action="where-like.php" method="get" class="search-form">
+            <input type="text" placeholder="ふりがなで検索" name="keyword">
+            <input type="submit" value="検索">
+        </form>
      <table>
          <tr>
-             <th>ID</th>
              <th>氏名</th>
+             <th>ふりがな</th>
          </tr>
          <?php
          // 配列の中身を順番に取り出し、表形式で出力する
          foreach ($results as $result) {
-             echo "<tr><td>{$result['id']}</td><td>{$result['name']}</td></tr>";
+             echo "<tr><td>{$result['name']}</td><td>{$result['furigana']}</td></tr>";
          }
          ?>
      </table>
