@@ -54,3 +54,8 @@ label span {
   .search-form input:first-child {
     margin-right: 0.5rem;
   }
+
+  .all-column {
+    max-width: 1000px;
+    table-layout: auto;
+  }
