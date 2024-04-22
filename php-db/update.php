@@ -26,6 +26,20 @@ if (isset($_POST['submit'])) {
         exit($e->getMessage());
     }
 }
+
+if (isset($_GET['id'])) {
+    try {
+        $pdo = new PDO($dsn, $user, $password);
+        $sql = 'SELECT * FROM users WHERE id = :id';
+        $stmt = $pdo->prepare($sql);
+
+        $stmt->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+}
+
 ?>
 
 
@@ -40,6 +54,7 @@ if (isset($_POST['submit'])) {
  </head>
  
  <body>
+    <p>宙</p>
      <h1>ユーザー更新</h1>
      <p>更新する内容を入力してください。</p>
      <form action="update.php" method="post">
