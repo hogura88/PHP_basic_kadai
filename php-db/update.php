@@ -37,9 +37,15 @@ if (isset($_GET['id'])) {
         $stmt->execute();
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($user === FALSE) {
+            exit('idパラメータの値が不正です。');
+        }
+    } catch (PDOException $e) {
+        exit($e->getMessage());
     }
+} else {
+    exit('idパラメータの値が存在しません。');
 }
-
 ?>
 
 
