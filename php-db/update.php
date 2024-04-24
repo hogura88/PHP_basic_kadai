@@ -8,8 +8,13 @@ if (isset($_POST['submit'])) {
         $pdo = new PDO($dsn, $user, $password);
 
         $sql = '
-            INSERT INTO users (name, furigana, email, age, address)
-            VALUES (:name, :furigana, :email, :age, :address)
+            UPDATE users
+            SET name = :name,
+            furigana = :furigana,
+            email = :email,
+            age = :age,
+            address = :address
+            WHERE id = :id
             ';
             $stmt = $pdo->prepare($sql);
 
@@ -18,10 +23,11 @@ if (isset($_POST['submit'])) {
             $stmt->bindValue('email',$_POST['user_email'], PDO::PARAM_STR);
             $stmt->bindValue('age',$_POST['user_age'], PDO::PARAM_INT);
             $stmt->bindValue('address',$_POST['user_address'], PDO::PARAM_STR);
+            $stmt->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
 
             $stmt->execute();
 
-            header('Location: select.php');
+            header('Location: users.php');
     } catch (PDOException $e) {
         exit($e->getMessage());
     }
@@ -60,24 +66,23 @@ if (isset($_GET['id'])) {
  </head>
  
  <body>
-    <p>宙</p>
      <h1>ユーザー更新</h1>
      <p>更新する内容を入力してください。</p>
-     <form action="update.php" method="post">
+     <form action="update.php?id=<?= $_GET['id'] ?>" method="post">
         <div>
             <label for="user_name">お名前<span> 【必須】</span></label>
-            <input type="text" id="user_name" name="user_name" maxlength="60" required>
+            <input type="text" id="user_name" name="user_name" value="<?= $user['name'] ?>" maxlength="60" required>
             <label for="user_furigana">ふりがな<span>【必須】</span></label>
-             <input type="text" id="user_furigana" name="user_furigana" maxlength="60" required>
+             <input type="text" id="user_furigana" name="user_furigana" value="<?= $user['furigana'] ?>" maxlength="60" required>
  
              <label for="user_email">メールアドレス<span>【必須】</span></label>
-             <input type="email" id="user_email" name="user_email" maxlength="255" required>
+             <input type="email" id="user_email" name="user_email" value="<?= $user['email'] ?>" maxlength="255" required>
  
              <label for="user_age">年齢</label>
-             <input type="number" id="user_age" name="user_age" min="13" max="130">
+             <input type="number" id="user_age" name="user_age" value="<?= $user['age'] ?>" min="13" max="130">
  
              <label for="user_address">住所</label>
-             <input type="text" id="user_address" name="user_address" maxlength="255">
+             <input type="text" id="user_address" name="user_address" value="<?= $user['address'] ?>" maxlength="255">
          </div>
          <button type="submit" name="submit" value="update">更新</button>
      </form>
