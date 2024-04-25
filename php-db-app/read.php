@@ -5,8 +5,31 @@ $password = '';
 
 try {
     $pdo = new PDO($dsn, $user, $password);
-    $sql_select = 'SELECT * FROM products';
-    $stmt_select = $pdo->query($sql_select);
+
+    if (isset($_GET['order'])) {
+        $order = $_GET['order'];
+    } else {
+        $order = NULL;
+    }
+
+    if (isset($_GET['keyword'])) {
+        $keyword = $_GET['keyword'];
+    } else {
+        $keyword = NULL;
+    }
+
+    if ($order === 'desc') {
+        $sql_select = 'SELECT * FROM products WHERE product_name LIKE :keyword ORDER BY updated_at DESC';
+    } else {
+        $sql_select = 'SELECT * FROM products WHERE product_name LIKE :keyword ORDER BY updated_at ASC';
+    }
+
+    $stmt_select = $pdo->prepare($sql_select);
+    
+    $partial_match = "%{$keyword}%";
+    $stmt_select->bindValue(':keyword', $partial_match, PDO::PARAM_STR);
+    $stmt_select->execute();
+
     $products = $stmt_select->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     exit($e->getMessage());
@@ -37,11 +60,25 @@ try {
      <main>
          <article class="products">
              <h1>商品一覧</h1>
+             <?php
+             if (isset($_GET['message'])) {
+                echo "<p class='success'>{$_GET['message']}</p>";
+             }
+             ?>
              <div class="products-ui">
                  <div>
-                     <!-- ここに並び替えボタンと検索ボックスを作成する -->
+                 <a href="read.php?order=desc&keyword=<?= $keyword ?>">
+                         <img src="images/desc.png" alt="降順に並び替え" class="sort-img">
+                     </a>
+                     <a href="read.php?order=asc&keyword=<?= $keyword ?>">
+                         <img src="images/asc.png" alt="昇順に並び替え" class="sort-img">
+                     </a>
+                     <form action="read.php" method="get" class="search-form">
+                            <input type="hidden" name="order" value="<?= $order ?>">
+                            <input type="text" class="search-box" placeholder="商品名で検索" name="keyword" value="<?= $keyword ?>">
+                     </form>
                  </div>
-                 <a href="#" class="btn">商品登録</a>
+                 <a href="create.php" class="btn">商品登録</a>
              </div>
              <table class="products-table">
                  <tr>
