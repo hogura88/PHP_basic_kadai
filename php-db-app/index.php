@@ -23,6 +23,7 @@
          <article class="home">
              <h1>商品管理アプリ</h1>
              <p>『PHPとデータベースを連携しよう』成果物</p>
+             <p>復習で2回目の作成</p>
              <a href="read.php" class="btn">商品一覧</a>
          </article>
      </main>
