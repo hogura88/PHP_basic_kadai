@@ -41,7 +41,7 @@
         } elseif ($num === 3) {
             echo '当たりです';
         } else {
-            echo 'はずれです';
+            echo 'あんぎです';
         }
         ?>
      </P>
