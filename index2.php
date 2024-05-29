@@ -34,6 +34,13 @@
         echo '<br>';
         $my_name = '侍一郎';
         echo '私の名前は' . $my_name . 'です。';
+        echo '<br>';
+        $my_name = 'になとこ';
+        echo "私の名前は{$my_name}です。";
+        echo '<br>';
+        $user_names = ['侍太郎', '侍一郎', '侍二郎', '侍三郎', '侍四郎'];
+        print_r($user_names);
+        echo '<br>';
 
         ?>
     
