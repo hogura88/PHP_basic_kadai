@@ -41,6 +41,12 @@
         $user_names = ['侍太郎', '侍一郎', '侍二郎', '侍三郎', '侍四郎'];
         print_r($user_names);
         echo '<br>';
+        $personal_data = ['name' => '侍太郎', 'age' => 36, 'gender' => '男性'];
+        print_r($personal_data);
+        echo '<br>';
+        $personal_data['age'] = 37;
+        $personal_data['address'] = '東京都';
+        print_r($personal_data);
 
         ?>
     
