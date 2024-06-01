@@ -47,6 +47,35 @@
         $personal_data['age'] = 37;
         $personal_data['address'] = '東京都';
         print_r($personal_data);
+        echo '<br>';
+        echo $personal_data['gender'];
+        echo '<br>';
+        $num = mt_round(0,4);
+        echo $num;
+        echo '<br>';
+        if ($num === 4) {
+            echo '大当たりです';
+        } elseif ($num === 3) {
+            echo '当たりです';
+        } else {
+            echo 'はずれです';
+        }
+        echo '<br>';
+        $num = 20;
+        if ($num > 10 && $num > 30) {
+            echo '変数$numは10より大きく30より小さいです';
+        } else {
+            echo '条件が成り立ちませんでした';
+        }
+        echo '<br>';
+        $num = 30;
+        if ($num === 10 || $num === 30) {
+            echo '変数$numは10または30です';
+        } else {
+            echo '条件が成り立ちませんでした';
+        }
+
+
 
         ?>
     
