@@ -107,6 +107,16 @@
                 }
                 ?>
             </p>
+<p>
+    <?php
+    $num = mt_rand(0, 4);
+    echo"最初の値は{$num}です。<br>";
+    while ($num !== 0) {
+        $num = mt_rand(0, 4);
+        echo "現在の値は{$num}です。<br>";
+    }
+    ?>
+</p>
 
  </body>
  
