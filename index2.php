@@ -139,6 +139,25 @@
     ?>
 </p>
 
+<p>
+         <?php
+         $user_names = ['侍太郎', '侍一郎', '侍二郎', '侍三郎', '侍四郎'];
+         foreach ($user_names as $user_name) {
+            echo $user_name . '<br>';
+         }
+         ?>
+</p>
+<p>
+         <?php
+         $personal_data = ['name' => '侍太郎', 'age' => 36, 'gender' => '男性'];
+         foreach ($personal_data as $key => $value) {
+            echo "{$key}は{$value}です。<br>";
+         }
+         foreach ($personal_data as $value) {
+            echo $value . '<br>';
+         }
+         ?>
+</p>
  </body>
  
  </html>
