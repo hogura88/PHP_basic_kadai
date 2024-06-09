@@ -192,6 +192,25 @@
                 }
                 ?>
             </p>
+    <p>
+        <?php
+        $score = [
+            '国語' => 80,
+             '数学' => 55,
+             '理科' => 70,
+             '社会' => 85,
+             '英語' => 60
+        ];
+        echo '合格した科目は以下のとおりです。<br>';
+
+        foreach ($score as $key => $value) {
+            if ($value < 70) {
+                continue;
+            }
+            echo "{$key}：{$value}点<br>";
+        }
+        ?>
+    </p>
  
 
  </body>
