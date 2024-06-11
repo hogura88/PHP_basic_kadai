@@ -50,7 +50,7 @@
         echo '<br>';
         echo $personal_data['gender'];
         echo '<br>';
-        $num = mt_round(0,4);
+        $num = mt_rand(0,4);
         echo $num;
         echo '<br>';
         if ($num === 4) {
@@ -88,7 +88,7 @@
         <p>
             <?php
             for ($i = 1; $i <= 10; $i++) {
-                $num = mt_round(1, 20);
+                $num = mt_rand(1, 20);
                 echo "{$i}回目の結果は{$num}です。<br>";
                 if ($num === 20) {
                     echo '20が出たので繰り返し処理を強制終了します。';
@@ -209,7 +209,26 @@
             }
             echo "{$key}：{$value}点<br>";
         }
-     　　echo 'この文章は石垣島空港でスマホから編集しています。<br>';
+            echo 'この文章は石垣島空港でスマホから編集しています。<br>';
+        ?>
+    </p>
+
+    <p>
+        <?php
+        function say_good_morning() {
+            echo 'おはようございます！<br>';
+             echo '昨日はよく眠れましたか？<br>';
+             echo '今日も一日頑張りましょう！<br>';
+        }
+
+        function say_good_evening() {
+            echo 'こんばんは！<br>';
+             echo '今日も一日お疲れさまでした。<br>';
+        }
+
+        say_good_morning();
+
+        say_good_evening();
         ?>
     </p>
  
