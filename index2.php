@@ -231,6 +231,22 @@
         say_good_evening();
         ?>
     </p>
+    <P>
+        <?php
+        function calculate_total($price) {
+            $total = $price + 500;
+            echo $total . '円<br>';
+        }
+
+        calculate_total(1200);
+
+        function add_two_arguments($price, $shipping_fee) {
+            $total = $price + $shipping_fee;
+            echo $total . '円<br>';
+        }
+        add_two_arguments(1200, 500);
+        ?>
+    </p>
  
 
  </body>
