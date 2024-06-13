@@ -253,6 +253,12 @@
             return $num * 2;
         }
         echo double(30);
+
+        function doub($nu) {
+            $second = $nu * 2;
+            echo $second;
+        }
+        doub(30);
         ?>
     </p>
  
