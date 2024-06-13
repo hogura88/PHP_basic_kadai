@@ -247,6 +247,14 @@
         add_two_arguments(1200, 500);
         ?>
     </p>
+    <p>
+        <?php
+        function double($num) {
+            return $num * 2;
+        }
+        echo double(30);
+        ?>
+    </p>
  
 
  </body>
