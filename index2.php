@@ -261,6 +261,16 @@
         doub(30);
         ?>
     </p>
+    <p>
+        <?php 
+        class Product {
+            public $name;
+        }
+        $shampoo = new Product();
+        $shampoo->name = 'シャンプー';
+        echo $shampoo->name;
+        ?>
+    </p>
  
 
  </body>
