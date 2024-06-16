@@ -264,7 +264,7 @@
     <p>
         <?php 
         class Product {
-            private $name;
+            public $name;
 
             public function set_name(string $name) {
                 $this->name = $name;
@@ -281,6 +281,25 @@
         $shampoo = new Product();
         $shampoo->name = 'シャンプー';
         echo $shampoo->name;
+        ?>
+    </p>
+
+    <p>
+        <?php
+        class User {
+            private $name;
+            private $age;
+            private $gender;
+
+            public function __construct(string $name, int $age, string $gender) {
+                $this->name = $name;
+                $this->age = $age;
+                $this->gender = $gender;
+            }
+        }
+
+        $user = new User('侍太郎', 36, '男性');
+        print_r($user);
         ?>
     </p>
  
