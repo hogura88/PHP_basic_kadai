@@ -26,8 +26,28 @@
                 <td>性別</td>
                 <td>
                     <input type="radio" name="user_gender" value="男性" checked>男性
+                    <input type="radio" name="user_gender" value="女性" checked>女性
+                    <input type="radio" name="user_gender" value="その他" checked>その他
+                </td>
+            </tr>
+            <tr>
+                <td>お問い合わせ種別</td>
+                <td>
+                    <select name="category">
+                        <option value="ご意見やご感想">ご意見やご感想</option>
+                        <option value="不具合について">不具合について</option>
+                        <option value="その他">その他</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>お問い合わせ内容</td>
+                <td>
+                    <textarea name="message" cols="30" rows="10"></textarea>
                 </td>
             </tr>
         </table>
+        <input type="submit" value="送信">
     </form>
 </body>
+</html>
