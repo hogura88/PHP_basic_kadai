@@ -4,6 +4,21 @@ $email = $_POST['user_email'];
 $gender = $_POST['user_gender'];
 $category = $_POST['category'];
 $message = $_POST['message'];
+
+$errors = [];
+if (empty($name)) {
+    $errors[] = 'お名前を入力してください。';
+}
+if (empty($email)) {
+    $errors[] = 'メールアドレスを入力してください。';
+} elseif (!filter_var( $email, FILTER_VALIDATE_EMAIL)) {
+    $errors[] = 'メールアドレスの入力形式が正しくありません。';
+}
+if (empty($message)) {
+    $errors[] = 'お問い合わせ内容を入力してください。';
+} elseif (mb_strlen($message) > 100) {
+    $errors[] = 'お問い合わせ内容が100文字を超えています。';
+}
 ?>
 
 <!DOCTYPE html>
@@ -46,5 +61,13 @@ $message = $_POST['message'];
         <button id="confirm-btn" onclick="location.href='complete.php';">確定</button>
         <button id="cancel-btn" onclick="history.back();">キャンセル</button>
     </p>
+    <?php
+    if (!empty($errors)) {
+        foreach ($errors as $error) {
+            echo '<font color="red">' . $error . '</font>'.'<br>';
+        }
+        echo '<script> document.getElementId("confirm-btn").disable = true; </script>';
+    }
+    ?>
 </body>
 </html>
