@@ -25,7 +25,7 @@ if (empty($message)) {
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>PHP基礎講座</title>
+    <title>PHP基礎講座(復習)</title>
 </head>
 <body>
     <h2>入力内容をご確認ください。</h2>
