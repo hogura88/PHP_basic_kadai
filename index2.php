@@ -341,6 +341,26 @@
         $coffee->show_name();
         ?>
     </p>
+
+    <p>
+        <?php
+        class Product {
+            private $name;
+
+            public function set_name(string $name) {
+                $this->name = $name;
+            }
+            public function show_name() {
+                echo $this->name . '<br>';
+            }
+        }
+        $coffee = new Product();
+
+        $coffee->set_name('コーヒー');
+        $coffee->show_name();
+        ?>
+
+    </p>
  
 
  </body>
