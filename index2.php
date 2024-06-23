@@ -361,6 +361,24 @@
         ?>
 
     </p>
+
+    <p>
+        <?php
+        class User {
+            private $name;
+            private $age;
+            private $gender;
+
+            public function __construct(string $name, int $age, string $gender) {
+                $this->name = $name;
+                $this->age = $age;
+                $this->gender = $gender;
+            }
+        }
+        $user = new User('侍太郎', 36, '男性');
+        print_r($user);
+        ?>
+    </p>
  
 
  </body>
